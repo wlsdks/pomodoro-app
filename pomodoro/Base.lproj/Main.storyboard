@@ -80,6 +80,7 @@
                     <connections>
                         <outlet property="cancelButton" destination="mUx-Ot-9GX" id="Jpv-Lc-llp"/>
                         <outlet property="datePicker" destination="mlM-dQ-go0" id="qFW-Ed-V4p"/>
+                        <outlet property="imageView" destination="sWh-dm-xO8" id="eZy-tf-xvC"/>
                         <outlet property="progressView" destination="wF0-Fl-ajO" id="tt7-co-6V4"/>
                         <outlet property="timerLabel" destination="sKT-vq-tZi" id="Sn7-IA-Shy"/>
                         <outlet property="toggleButton" destination="g3g-2k-Ryq" id="Jy7-rT-pp7"/>

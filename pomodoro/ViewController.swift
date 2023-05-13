@@ -23,6 +23,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var toggleButton: UIButton!
+    @IBOutlet weak var imageView: UIImageView!
     
     //timer에 저장된 시간을 초로 저장하는 변수
     var duration = 60
@@ -66,6 +67,13 @@ class ViewController: UIViewController {
                 let secondes = (self.currentSeconds % 3600) % 60 // 초를 구한다.
                 self.timerLabel.text = String(format: "%02d:%02d:%02d", hour, minutes, secondes) // 시 분 초가 표시된다.
                 self.progressView.progress = Float(self.currentSeconds) / Float(self.duration) // 카운트다운 될때마다 게이지가 줄어들게 한다.
+                // imageView에 애니메이션으로 회전하도록 작성함
+                UIView.animate(withDuration: 0.5, delay: 0) {
+                    self.imageView.transform = CGAffineTransform(rotationAngle: .pi)
+                }
+                UIView.animate(withDuration: 0.5, delay: 0.5) {
+                    self.imageView.transform = CGAffineTransform(rotationAngle: .pi * 2)
+                }
                 
                 // 카운트 다운이 다 되었을때
                 if self.currentSeconds <= 0 {
@@ -92,6 +100,7 @@ class ViewController: UIViewController {
             self.timerLabel.alpha = 0
             self.progressView.alpha = 0
             self.datePicker.alpha = 1
+            self.imageView.transform = .identity // 이미지뷰가 원상태로 돌아오도록 한다.
         }
         self.toggleButton.isSelected = false
         self.timer?.cancel()
