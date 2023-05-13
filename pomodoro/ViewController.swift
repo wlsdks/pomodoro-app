@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AudioToolbox
 
 // MARK: - emum타입 선언
 enum TimerStatus {
@@ -58,12 +59,20 @@ class ViewController: UIViewController {
             self.timer?.schedule(deadline: .now(), repeating: 1)
             // 타이머가 반복할때마다 이 메서드가 동작해서 handler에 부여된 클로져 함수가 동작한다.
             self.timer?.setEventHandler(handler: { [weak self] in
-                self?.currentSeconds -= 1
-                debugPrint(self?.currentSeconds)
+                guard let self = self else { return }
+                self.currentSeconds -= 1
+                let hour = self.currentSeconds / 3600 // 시를 구한다.
+                let minutes = (self.currentSeconds % 3600) / 60 // 분을 구한다.
+                let secondes = (self.currentSeconds % 3600) % 60 // 초를 구한다.
+                self.timerLabel.text = String(format: "%02d:%02d:%02d", hour, minutes, secondes) // 시 분 초가 표시된다.
+                self.progressView.progress = Float(self.currentSeconds) / Float(self.duration) // 카운트다운 될때마다 게이지가 줄어들게 한다.
                 
-                if self?.currentSeconds ?? 0 <= 0 {
+                // 카운트 다운이 다 되었을때
+                if self.currentSeconds <= 0 {
                     // 타이머가 종료
-                    self?.stopTimer()
+                    self.stopTimer()
+                    // 아이폰 기본 사운드가 동작
+                    AudioServicesPlaySystemSound(1005)
                 }
             })
             // 타이머를 실행시킨다.
