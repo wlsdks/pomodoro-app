@@ -42,11 +42,17 @@
                                         <rect key="frame" x="0.0" y="0.0" width="132.66666666666666" height="30"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="취소"/>
+                                        <connections>
+                                            <action selector="tapCancelButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="amN-9l-DI2"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g3g-2k-Ryq">
                                         <rect key="frame" x="212.66666666666663" y="0.0" width="132.33333333333337" height="30"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="시작"/>
+                                        <connections>
+                                            <action selector="tapToggleButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PT3-gR-DU8"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -71,6 +77,13 @@
                             <constraint firstItem="sKT-vq-tZi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="wqW-09-2Ao"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="mUx-Ot-9GX" id="Jpv-Lc-llp"/>
+                        <outlet property="datePicker" destination="mlM-dQ-go0" id="qFW-Ed-V4p"/>
+                        <outlet property="progressView" destination="wF0-Fl-ajO" id="tt7-co-6V4"/>
+                        <outlet property="timerLabel" destination="sKT-vq-tZi" id="Sn7-IA-Shy"/>
+                        <outlet property="toggleButton" destination="g3g-2k-Ryq" id="Jy7-rT-pp7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
